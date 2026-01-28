@@ -77,4 +77,4 @@ This automated logic produces a clean, actionable list for win-back and re-engag
 
 ---
 
-📌 *This project is designed to demonstrate real-world SQL analytics, data modeling, and business insight generation.*
+*This project is designed to demonstrate real-world SQL analytics, data modeling, and business insight generation.*
