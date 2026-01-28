@@ -1,55 +1,80 @@
-# Amazon Sales SQL Analysis
+# Amazon Sales Data Engineering & Advanced SQL Analytics
 
-## Overview
+## 📌 Project Overview
+This project demonstrates a comprehensive SQL data analytics workflow, transforming raw, flat e-commerce data into a structured relational database. The analysis moves beyond basic reporting into **behavioral analytics**, leveraging advanced SQL techniques to evaluate customer retention, churn, and purchase velocity.
 
-This project demonstrates a **complete SQL data analytics workflow** using an e-commerce dataset from [Kaggle: Amazon Sales Dataset](https://www.kaggle.com/datasets/rohiteng/amazon-sales-dataset).  
-
-The goal is to:
-
-1. **Clean and normalize raw order data** into dimensional tables.  
-2. **Perform data quality checks** to ensure accuracy.  
-3. **Analyze customer behavior**, including retention metrics.  
-4. Prepare the work for use in a **portfolio or interactive analytics project**.  
+The goal of this project is to showcase strong data modeling, SQL engineering, and analytical thinking skills commonly expected in data analyst and data engineer roles.
 
 ---
 
-## Dataset
-
-**Source:** [Amazon Sales Dataset](https://www.kaggle.com/datasets/rohiteng/amazon-sales-dataset)  
-
-- Contains historical order data for Amazon e-commerce transactions.  
-- Columns include `OrderID`, `CustomerID`, `CustomerName`, `OrderDate`, `OrderStatus`, `TotalAmount`, `PaymentMethod`, `City`, `State`, `Country`, and more.  
-- Used as **raw landing data** in this project.  
+## 🚀 Key Features
+- **Data Normalization:** Designed and implemented a relational schema by decomposing raw sales data into optimized `customers` and `orders` tables.
+- **Advanced Analytics:** Performed Cohort Analysis to measure long-term user engagement and Churn Analysis to identify inactive customers.
+- **Window Functions:** Used `LAG()` and `ROW_NUMBER()` to sequence customer purchase journeys and calculate time between orders.
+- **Data Quality Assurance:** Enforced referential integrity with primary and foreign key constraints and validated data completeness.
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-| File | Description |
-|------|-------------|
-| `03_create_clean_tables.sql` | Creates clean tables (`customers`, `orders`) from `raw_orders` and inserts deduplicated data. Includes data quality checks. |
-| `04_retention_analysis.sql` | Performs SQL analytics to calculate customer retention and repeat purchase behavior. |
+| File | Description | Key SQL Techniques |
+|-----|------------|-------------------|
+| `create_clean_tables.sql` | Normalizes raw data into structured tables with PK/FK constraints | DDL, DML, Data Cleaning |
+| `retention_analysis.sql` | Calculates repeat customer percentage | CTEs, Aggregations |
+| `cohort_retention_analysis.sql` | Tracks customer activity by first purchase month | Date Formatting, Joins |
+| `churn_analysis.sql` | Identifies customers inactive for over 6 months | `DATE_SUB`, `CURDATE` |
+| `time_frequency_btw_orders.sql` | Measures purchase velocity per customer | `LAG()`, `DATEDIFF` |
+| `revenue_monthly.sql` | Analyzes monthly revenue and order volume trends | Time-Series Analysis |
 
 ---
 
-## Steps
+## 📊 Analytics Deep-Dive
 
-### 1️⃣ Stage Raw Data
-- Imported `raw_orders` table from the dataset.  
-- This table is used only as a **landing zone**, not for direct analysis.  
+### 1. Customer Retention
+The analysis reveals that **68.70%** of customers are repeat buyers.  
+This metric highlights strong brand loyalty and indicates sustainable long-term revenue potential.
 
-### 2️⃣ Create Clean Tables
-- **`customers` table**: De-duplicated by `CustomerID`.  
-- **`orders` table**: Stores transactional order data linked to `customers`.  
-- **Techniques used:** `SELECT DISTINCT`, `GROUP BY`, `MIN()` functions, primary/foreign keys.  
+---
 
-### 3️⃣ Data Quality Checks
-- Verified all orders have valid customers.  
-- Checked for missing values and duplicate keys.  
-- Reviewed distribution of `OrderStatus`.  
+### 2. Cohort Analysis
+Customers are grouped by their first purchase month to track engagement over time.  
+This approach helps measure customer “stickiness” and identifies drop-off patterns across cohorts.
 
-### 4️⃣ Customer Retention Analysis
-- Calculated **repeat customers** and **overall retention rate** using SQL.  
-- Example query used a **Common Table Expression (CTE)**:
+---
 
+### 3. Purchase Frequency (Velocity)
+Using window functions, the project calculates `days_since_last_order` for every transaction.  
+These insights can be used to:
+- Predict customer repurchase behavior  
+- Trigger personalized marketing campaigns  
+- Optimize promotional timing  
 
+---
+
+### 4. Churn Detection
+Customers are classified as **churned** if they have not placed an order in over 6 months.  
+This automated logic produces a clean, actionable list for win-back and re-engagement strategies.
+
+---
+
+## 🛠️ Tech Stack
+- **Database:** MySQL / PostgreSQL  
+- **Querying:** CTEs, Window Functions, Complex Joins, Date Functions  
+- **Data Modeling:** Snowflake & Star Schema principles  
+
+---
+
+## 📈 Key Insights Summary
+- **High Loyalty:** Nearly 69% of customers return for additional purchases.
+- **Revenue Trends:** Monthly revenue analysis reveals seasonal patterns and order volume fluctuations.
+- **Operational Reliability:** Achieved 100% referential integrity through strict foreign key enforcement.
+
+---
+
+## ▶️ How to Run
+1. Execute `create_clean_tables.sql` to create and normalize the database schema.
+2. Run any analysis script (e.g., `cohort_retention_analysis.sql`) to generate insights and reports.
+
+---
+
+📌 *This project is designed to demonstrate real-world SQL analytics, data modeling, and business insight generation.*
