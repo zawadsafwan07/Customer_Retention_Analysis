@@ -7,6 +7,50 @@ The goal of this project is to showcase strong data modeling, SQL engineering, a
 
 ---
 
+## 📁 Dataset Source
+The dataset used in this project is sourced from Kaggle:
+
+🔗 **Amazon Sales Dataset**  
+https://www.kaggle.com/datasets/rohiteng/amazon-sales-dataset
+
+The dataset contains Amazon product sales and review-level data, including pricing, ratings, categories, and user information, provided in a raw, flat CSV format.
+
+---
+
+## 🧾 Dataset Overview
+Key fields from the dataset include:
+
+| Column | Description |
+|------|------------|
+| `product_id` | Unique product identifier |
+| `product_name` | Name of the product |
+| `category` | Product category hierarchy |
+| `actual_price` | Original product price |
+| `discounted_price` | Price after discount |
+| `discount_percentage` | Discount applied |
+| `rating` | Average product rating |
+| `rating_count` | Total number of ratings |
+| `user_id` | Reviewer/customer identifier |
+| `review_id` | Unique review identifier |
+| `review_title` | Review headline |
+| `review_content` | Review text |
+| `img_link` | Product image URL |
+| `product_link` | Amazon product page URL |
+
+---
+
+## 🧹 Data Cleaning & Preprocessing
+Before loading the data into SQL, the raw Kaggle CSV was cleaned and standardized using **Python (Pandas)** to ensure data quality and compatibility with relational databases.
+
+### Cleaning Steps Performed
+- Removed duplicate rows
+- Handled missing and null values
+- Converted price fields from string to numeric
+- Standardized percentage and rating columns
+- Cleaned text fields and category formatting
+- Validated primary and foreign key candidates
+
+
 ## 🚀 Key Features
 - **Data Normalization:** Designed and implemented a relational schema by decomposing raw sales data into optimized `customers` and `orders` tables.
 - **Advanced Analytics:** Performed Cohort Analysis to measure long-term user engagement and Churn Analysis to identify inactive customers.
